@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0ED82BE5-F7F5-480E-84C3-B4D47CF34A50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{14433536-6A14-4C84-81DE-AA8E7BC00339}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itau.CoinExchange.Api", "src\Itau.CoinExchange.Api\Itau.CoinExchange.Api.csproj", "{F73C4876-52EB-4975-A1D8-A5758719F1AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itau.CoinExchange.Application", "src\Itau.CoinExchange.Application\Itau.CoinExchange.Application.csproj", "{14C2893D-6CBB-4E7E-8397-94DC29F65177}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F73C4876-52EB-4975-A1D8-A5758719F1AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F73C4876-52EB-4975-A1D8-A5758719F1AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F73C4876-52EB-4975-A1D8-A5758719F1AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F73C4876-52EB-4975-A1D8-A5758719F1AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14C2893D-6CBB-4E7E-8397-94DC29F65177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14C2893D-6CBB-4E7E-8397-94DC29F65177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14C2893D-6CBB-4E7E-8397-94DC29F65177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14C2893D-6CBB-4E7E-8397-94DC29F65177}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F73C4876-52EB-4975-A1D8-A5758719F1AE} = {0ED82BE5-F7F5-480E-84C3-B4D47CF34A50}
+		{14C2893D-6CBB-4E7E-8397-94DC29F65177} = {0ED82BE5-F7F5-480E-84C3-B4D47CF34A50}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {47A0DF2F-BE63-48B5-8A92-CFA446A80923}
+	EndGlobalSection
+EndGlobal
