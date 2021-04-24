@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+  itau.coinexchange.api:
+    image: ${DOCKER_REGISTRY-}itaucoinexchangeapi
+    build:
+      context: .
+      dockerfile: src/Itau.CoinExchange.Api/Dockerfile
+    depends_on:
+      mssql:
+        condition: service_healthy
+    networks:
+      - itaucoinexchangenetwork
+    env_file:
+      - itaucoinexchange-api.env
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:latest
+    container_name: itau-coin-exchange-db
+    ports:
+        - "1433:1433"
+    volumes:
+        - C:\Databases\ItauCoinExchangeDb:/var/opt/mssql/data
+    environment:
+        SA_PASSWORD: "@ItauCoinExchangeDb"
+        ACCEPT_EULA: "Y"
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "$$SA_PASSWORD" -Q "SELECT 1" || exit 1
+      interval: 20s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+    networks:
+      - itaucoinexchangenetwork
+
+networks:
+  itaucoinexchangenetwork:
+    driver: bridge

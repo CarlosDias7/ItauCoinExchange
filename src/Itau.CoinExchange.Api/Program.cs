@@ -1,19 +1,28 @@
+using Itau.CoinExchange.Data.Contexts;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Itau.CoinExchange.Api
 {
-    public class Program
+    public static class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            try
+            {
+                var host = CreateHostBuilder(args).Build();
+                await host.MigrateDatabaseAsync();
+                await host.RunAsync();
+                Console.WriteLine("Application stoped");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An unhandled exception occured during bootstrapping. {ex.InnerException?.Message ?? ex.Message}");
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -22,5 +31,13 @@ namespace Itau.CoinExchange.Api
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+        private static async Task MigrateDatabaseAsync(this IHost host)
+        {
+            using var scope = host.Services.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<ItauCoinExchangeDbContext>();
+            await dbContext.Database.MigrateAsync();
+            await dbContext.Database.EnsureCreatedAsync();
+        }
     }
 }

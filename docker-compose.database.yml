@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:latest
+    container_name: sql-server-test
+    ports:
+        - "1433:1433"
+    volumes:
+        - C:\Databases\ItauCoinExchangeDb:/var/opt/mssql/data
+    environment:
+        SA_PASSWORD: "@ItauCoinExchangeDb"
+        ACCEPT_EULA: "Y"
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "$$SA_PASSWORD" -Q "SELECT 1" || exit 1
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+    networks:
+      - defaultnetwotk
+
+networks:
+  defaultnetwotk:
+    driver: bridge
