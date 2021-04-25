@@ -61,6 +61,15 @@ namespace Itau.CoinExchange.Domain {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O montante informado para aplicação da taxa do segmento deve ser maior que 0 (zero)..
+        /// </summary>
+        internal static string Segment_ApplyExchangeRate_Amount_Less_Than_Zero {
+            get {
+                return ResourceManager.GetString("Segment_ApplyExchangeRate_Amount_Less_Than_Zero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A taxa de câmbio não deve ser menor que 0 (zero)..
         /// </summary>
         internal static string Segment_ExchangeRate_Less_Than_Zero {

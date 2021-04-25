@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ConvertCoinBySegmentCommand_Amoun_Less_Than_Zero" xml:space="preserve">
+    <value>O montante para a conversão deve ser maior que 0 (zero).</value>
+  </data>
+  <data name="ConvertCoinBySegmentCommand_CoinFrom_Is_Empty" xml:space="preserve">
+    <value>A moeda de origem deve ser informada para a conversão.</value>
+  </data>
+  <data name="ConvertCoinBySegmentCommand_CoinTo_Is_Empty" xml:space="preserve">
+    <value>A moeda de destino deve ser informada para a conversão.</value>
+  </data>
+  <data name="ConvertCoinBySegmentCommand_Date_Is_Invalid" xml:space="preserve">
+    <value>A data informada para a conversão de moedas é inválida.</value>
+  </data>
+  <data name="ConvertCoinBySegmentUseCase_Coin_Convertion_Is_Not_Possible" xml:space="preserve">
+    <value>Não foi possível realizar a conversão solicitada. Por favor tente novamente.</value>
+  </data>
+  <data name="ConvertCoinBySegmentUseCase_Segment_Not_Found" xml:space="preserve">
+    <value>O segmento informado não foi encontrado.</value>
+  </data>
   <data name="GetSegmentByIdQuery_SegmentId_Is_Empty" xml:space="preserve">
     <value>O identificador do segmento deve ser informado para a busca.</value>
   </data>

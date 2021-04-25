@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Itau.CoinExchange.Application.Notifications.Contexts
+namespace Itau.CoinExchange.Application.Contracts.Notifications.Contexts
 {
     public interface INotificationContext
     {

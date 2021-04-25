@@ -69,7 +69,7 @@ namespace Itau.CoinExchange.Api
                 c.IncludeXmlComments(xmlPath);
             });
 
-            services.UseItauExchangeDependencies();
+            services.UseItauExchangeDependencies(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)

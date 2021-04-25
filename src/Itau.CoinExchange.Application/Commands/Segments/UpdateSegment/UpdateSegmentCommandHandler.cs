@@ -1,4 +1,5 @@
 ﻿using Itau.CoinExchange.Application.Contracts.Dtos.Segments;
+using Itau.CoinExchange.Application.Contracts.Notifications.Contexts;
 using Itau.CoinExchange.Application.Notifications.Contexts;
 using Itau.CoinExchange.Domain.Entities.Segments;
 using Itau.CoinExchange.Domain.Entities.Segments.Repositories;

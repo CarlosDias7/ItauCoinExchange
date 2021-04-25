@@ -1,4 +1,6 @@
 ﻿using FluentValidation.Results;
+using Itau.CoinExchange.Application.Contracts.Notifications;
+using Itau.CoinExchange.Application.Contracts.Notifications.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

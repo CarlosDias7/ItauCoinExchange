@@ -1,4 +1,4 @@
-﻿namespace Itau.CoinExchange.Application.Notifications
+﻿namespace Itau.CoinExchange.Application.Contracts.Notifications
 {
     public class Notification
     {

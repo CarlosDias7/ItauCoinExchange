@@ -61,6 +61,60 @@ namespace Itau.CoinExchange.Application {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O montante para a conversão deve ser maior que 0 (zero)..
+        /// </summary>
+        internal static string ConvertCoinBySegmentCommand_Amoun_Less_Than_Zero {
+            get {
+                return ResourceManager.GetString("ConvertCoinBySegmentCommand_Amoun_Less_Than_Zero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A moeda de origem deve ser informada para a conversão..
+        /// </summary>
+        internal static string ConvertCoinBySegmentCommand_CoinFrom_Is_Empty {
+            get {
+                return ResourceManager.GetString("ConvertCoinBySegmentCommand_CoinFrom_Is_Empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A moeda de destino deve ser informada para a conversão..
+        /// </summary>
+        internal static string ConvertCoinBySegmentCommand_CoinTo_Is_Empty {
+            get {
+                return ResourceManager.GetString("ConvertCoinBySegmentCommand_CoinTo_Is_Empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A data informada para a conversão de moedas é inválida..
+        /// </summary>
+        internal static string ConvertCoinBySegmentCommand_Date_Is_Invalid {
+            get {
+                return ResourceManager.GetString("ConvertCoinBySegmentCommand_Date_Is_Invalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Não foi possível realizar a conversão solicitada. Por favor tente novamente..
+        /// </summary>
+        internal static string ConvertCoinBySegmentUseCase_Coin_Convertion_Is_Not_Possible {
+            get {
+                return ResourceManager.GetString("ConvertCoinBySegmentUseCase_Coin_Convertion_Is_Not_Possible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O segmento informado não foi encontrado..
+        /// </summary>
+        internal static string ConvertCoinBySegmentUseCase_Segment_Not_Found {
+            get {
+                return ResourceManager.GetString("ConvertCoinBySegmentUseCase_Segment_Not_Found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O identificador do segmento deve ser informado para a busca..
         /// </summary>
         internal static string GetSegmentByIdQuery_SegmentId_Is_Empty {

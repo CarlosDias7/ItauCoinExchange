@@ -22,6 +22,7 @@ namespace Itau.CoinExchange.Repository.Base
 
         public virtual void Delete(TId id)
         {
+            if (Equals(id, default(TId)) is true) return;
             var entity = GetById(id, asTracking: true);
             if (entity is null) return;
             _dbSet.Remove(entity);
@@ -36,6 +37,7 @@ namespace Itau.CoinExchange.Repository.Base
 
         public virtual async Task DeleteAsync(TId id, CancellationToken cancellationToken)
         {
+            if (Equals(id, default(TId)) is true) return;
             var entity = await GetByIdAsync(id, cancellationToken, asTracking: true);
             if (entity is null) return;
             _dbSet.Remove(entity);
@@ -56,6 +58,7 @@ namespace Itau.CoinExchange.Repository.Base
         public virtual TEntity Add(TEntity entity)
         {
             if (entity is null) return default;
+            if (!entity.Valid) return default;
             if (Any(entity.Id)) return entity;
             var entityEntry = _dbSet.Add(entity);
             return entityEntry.Entity;
@@ -64,6 +67,7 @@ namespace Itau.CoinExchange.Repository.Base
         public virtual async Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken)
         {
             if (entity is null) return default;
+            if (!entity.Valid) return default;
             if (await AnyAsync(entity.Id, cancellationToken)) return entity;
             var entityEntry = await _dbSet.AddAsync(entity, cancellationToken);
             return entityEntry.Entity;
@@ -94,12 +98,14 @@ namespace Itau.CoinExchange.Repository.Base
 
         public virtual void Update(TEntity entity)
         {
+            if (!entity.Valid) return;
             if (Any(entity.Id) is false) return;
             _dbSet.Update(entity);
         }
 
         public virtual async Task UpdateAsync(TEntity entity, CancellationToken cancellationToken)
         {
+            if (!entity.Valid) return;
             if (await AnyAsync(entity.Id, cancellationToken) is false) return;
             _dbSet.Update(entity);
         }

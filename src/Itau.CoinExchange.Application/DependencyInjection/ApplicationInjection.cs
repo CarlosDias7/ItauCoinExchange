@@ -1,4 +1,5 @@
-﻿using Itau.CoinExchange.Application.Contracts.UseCases.Segments;
+﻿using Itau.CoinExchange.Application.Contracts.Notifications.Contexts;
+using Itau.CoinExchange.Application.Contracts.UseCases.Segments;
 using Itau.CoinExchange.Application.Notifications.Contexts;
 using Itau.CoinExchange.Application.Pipelines;
 using Itau.CoinExchange.Application.UseCases.Segments;
@@ -23,6 +24,7 @@ namespace Itau.CoinExchange.Application.DependencyInjection
         {
             services.AddScoped<IGetSegmentsUseCase, GetSegmentsUseCase>();
             services.AddScoped<IUpdateSegmentExchangeRateUseCase, UpdateSegmentExchangeRateUseCase>();
+            services.AddScoped<IConvertCoinBySegmentUseCase, ConvertCoinBySegmentUseCase>();
         }
     }
 }

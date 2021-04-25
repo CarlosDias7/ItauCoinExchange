@@ -1,4 +1,5 @@
 ﻿using Itau.CoinExchange.Domain.Base.Entities;
+using System;
 
 namespace Itau.CoinExchange.Domain.Entities.Segments
 {
@@ -9,13 +10,13 @@ namespace Itau.CoinExchange.Domain.Entities.Segments
         public string Name { get; private set; }
         public decimal ExchangeRate { get; private set; }
 
-        public Segment(string name, decimal exchangeRate)
+        protected Segment(string name, decimal exchangeRate)
         {
             Name = name;
             ExchangeRate = exchangeRate;
         }
 
-        public void SetExchangeRate(decimal exChangeRate)
+        public virtual void SetExchangeRate(decimal exChangeRate)
         {
             if(exChangeRate < decimal.Zero)
             {
@@ -26,21 +27,12 @@ namespace Itau.CoinExchange.Domain.Entities.Segments
             ExchangeRate = exChangeRate;
         }
 
-        private void SetName(string name)
-        {
-            if(string.IsNullOrWhiteSpace(name))
-            {
-                AddError(DomainMessages.Segment_Name_Is_Empty);
-                return;
-            }
+        public virtual decimal ApplyExchangeRate(decimal amount)
+        { 
+            if(amount < decimal.Zero)
+                throw new ArgumentOutOfRangeException(DomainMessages.Segment_ApplyExchangeRate_Amount_Less_Than_Zero);
 
-            if(name.Length > NameMaxLength)
-            {
-                AddError(string.Format(DomainMessages.Segment_Name_Max_Length_Exceeded, NameMaxLength));
-                return;
-            }
-
-            Name = name;
+            return Math.Round(amount * (1m + ExchangeRate), 2);
         }
     }
 }

@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Itau.CoinExchange.Application.Contracts\Itau.CoinExchange.Application.Contracts.csproj" />
     <ProjectReference Include="..\Itau.CoinExchange.Domain\Itau.CoinExchange.Domain.csproj" />
+    <ProjectReference Include="..\Itau.CoinExchange.WebClients.Contracts\Itau.CoinExchange.WebClients.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>

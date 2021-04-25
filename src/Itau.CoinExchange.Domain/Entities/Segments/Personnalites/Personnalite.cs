@@ -5,6 +5,7 @@
         public Personnalite(string name, decimal exchangeRate)
             : base(name, exchangeRate)
         {
+            Validate();
         }
 
         protected override bool Validate()

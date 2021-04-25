@@ -1,4 +1,5 @@
-﻿using Itau.CoinExchange.Application.Notifications.Contexts;
+﻿using Itau.CoinExchange.Application.Contracts.Notifications.Contexts;
+using Itau.CoinExchange.Application.Notifications.Contexts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;

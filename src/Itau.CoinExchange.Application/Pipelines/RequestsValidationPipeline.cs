@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Itau.CoinExchange.Application.Notifications.Contexts;
+using Itau.CoinExchange.Application.Contracts.Notifications.Contexts;
 using MediatR;
 using System;
 using System.Collections.Generic;

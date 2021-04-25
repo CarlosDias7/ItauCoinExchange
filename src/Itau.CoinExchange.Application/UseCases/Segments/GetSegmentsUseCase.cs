@@ -1,12 +1,10 @@
 ﻿using Itau.CoinExchange.Application.Contracts.Dtos.Segments;
+using Itau.CoinExchange.Application.Contracts.Notifications.Contexts;
 using Itau.CoinExchange.Application.Contracts.UseCases.Segments;
-using Itau.CoinExchange.Application.Notifications.Contexts;
 using Itau.CoinExchange.Application.Queries.Segments.GetSegments;
 using MediatR;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -29,7 +27,7 @@ namespace Itau.CoinExchange.Application.UseCases.Segments
             {
                 return _mediator.Send(new GetSegmentsQuery());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _notificationContext.AddNotification(ex);
             }
