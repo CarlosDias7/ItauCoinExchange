@@ -3,10 +3,13 @@ version: '3.4'
 services:
   itau.coinexchange.api:
     image: ${DOCKER_REGISTRY-}itaucoinexchangeapi
-    container_name: itau-coin-exchange-dev
     build:
       context: .
       dockerfile: src/Itau.CoinExchange.Api/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://*:5000
+    ports:
+      - 5000:5000
     depends_on:
       mssql:
         condition: service_healthy
@@ -17,7 +20,7 @@ services:
 
   mssql:
     image: mcr.microsoft.com/mssql/server:latest
-    container_name: itau-coin-exchange-db-dev
+    container_name: itau-coin-exchange-db
     ports:
         - "1433:1433"
     volumes:

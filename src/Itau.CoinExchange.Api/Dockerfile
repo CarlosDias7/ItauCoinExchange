@@ -13,7 +13,10 @@ COPY ["src/Itau.CoinExchange.Domain/Itau.CoinExchange.Domain.csproj", "src/Itau.
 COPY ["src/Itau.CoinExchange.Domain.Base/Itau.CoinExchange.Domain.Base.csproj", "src/Itau.CoinExchange.Domain.Base/"]
 COPY ["src/Itau.CoinExchange.Repositories.Base/Itau.CoinExchange.Repositories.Base.csproj", "src/Itau.CoinExchange.Repositories.Base/"]
 COPY ["src/Itau.CoinExchange.Application.Contracts/Itau.CoinExchange.Application.Contracts.csproj", "src/Itau.CoinExchange.Application.Contracts/"]
+COPY ["src/Itau.CoinExchange.WebClients.Contracts/Itau.CoinExchange.WebClients.Contracts.csproj", "src/Itau.CoinExchange.WebClients.Contracts/"]
 COPY ["src/Itau.CoinExchange.DependenciesInjections/Itau.CoinExchange.DependenciesInjections.csproj", "src/Itau.CoinExchange.DependenciesInjections/"]
+COPY ["src/Itau.CoinExchange.WebClients/Itau.CoinExchange.WebClients.csproj", "src/Itau.CoinExchange.WebClients/"]
+COPY ["src/Itau.CoinExchange.Utils/Itau.CoinExchange.Utils.csproj", "src/Itau.CoinExchange.Utils/"]
 COPY ["src/Itau.CoinExchange.Data/Itau.CoinExchange.Data.csproj", "src/Itau.CoinExchange.Data/"]
 COPY ["src/Itau.CoinExchange.Repositories/Itau.CoinExchange.Repositories.csproj", "src/Itau.CoinExchange.Repositories/"]
 RUN dotnet restore "src/Itau.CoinExchange.Api/Itau.CoinExchange.Api.csproj"
