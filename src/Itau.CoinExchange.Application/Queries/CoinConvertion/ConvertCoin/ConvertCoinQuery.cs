@@ -5,14 +5,14 @@ using System;
 
 namespace Itau.CoinExchange.Application.Queries.CoinConvertion.ConvertCoin
 {
-    public class ConvertCoinCommand : IRequest<ConvertCoinResultDto>
+    public class ConvertCoinQuery : IRequest<ConvertCoinResultDto>
     {
         public string CoinFrom { get; set; }
         public string CoinTo { get; set; }
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
 
-        public ConvertCoinCommand(string coinFrom, string coinTo, decimal amount, DateTime date)
+        public ConvertCoinQuery(string coinFrom, string coinTo, decimal amount, DateTime date)
         {
             CoinFrom = coinFrom;
             CoinTo = coinTo;
@@ -21,7 +21,7 @@ namespace Itau.CoinExchange.Application.Queries.CoinConvertion.ConvertCoin
         }
     }
 
-    public class ConvertCoinBySegmentCommandValidator : AbstractValidator<ConvertCoinCommand>
+    public class ConvertCoinBySegmentCommandValidator : AbstractValidator<ConvertCoinQuery>
     {
         public ConvertCoinBySegmentCommandValidator()
         {

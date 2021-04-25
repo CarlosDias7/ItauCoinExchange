@@ -25,7 +25,7 @@ namespace Itau.CoinExchange.Application.UseCases.Segments
         {
             try
             {
-                var convertionResult = await _mediator.Send(new ConvertCoinCommand(dto.CoinFrom, dto.CoinTo, dto.Amount, DateTime.Today), cancellationToken);
+                var convertionResult = await _mediator.Send(new ConvertCoinQuery(dto.CoinFrom, dto.CoinTo, dto.Amount, DateTime.Today), cancellationToken);
                 if (convertionResult is null)
                 {
                     _notificationContext.AddNotification(ApplicationMessages.ConvertCoinBySegmentUseCase_Coin_Convertion_Is_Not_Possible);

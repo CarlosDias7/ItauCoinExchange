@@ -1,16 +1,18 @@
 using Itau.CoinExchange.Api.Filters;
+using Itau.CoinExchange.Data.Contexts;
 using Itau.CoinExchange.DependenciesInjections;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
@@ -70,6 +72,12 @@ namespace Itau.CoinExchange.Api
             });
 
             services.UseItauExchangeDependencies(Configuration);
+
+            services.AddHealthChecks()
+                .AddDbContextCheck<ItauCoinExchangeDbContext>(
+                    name: "Sql Server (Ready)",
+                    failureStatus: HealthStatus.Unhealthy,
+                    customTestQuery: (dbContext, cancellationToken) => dbContext.Segments.AnyAsync(cancellationToken));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)

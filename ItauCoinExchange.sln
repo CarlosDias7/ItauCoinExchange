@@ -49,6 +49,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itau.CoinExchange.Domain.Tests", "tests\Itau.CoinExchange.Domain.Tests\Itau.CoinExchange.Domain.Tests.csproj", "{49C0FDF6-AA5B-4C78-B0A0-C3E4514ADE80}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Application", "1 - Application", "{19EEF2BF-C5F1-4869-B506-6204269D91D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -136,6 +138,7 @@ Global
 		{5890BED3-9C63-4C3F-9053-461878FB256B} = {27F3C659-0A6E-45B7-9DA9-3AF0AE0AA999}
 		{1418DFC2-0206-468C-A675-985198E64B2E} = {14433536-6A14-4C84-81DE-AA8E7BC00339}
 		{49C0FDF6-AA5B-4C78-B0A0-C3E4514ADE80} = {1418DFC2-0206-468C-A675-985198E64B2E}
+		{19EEF2BF-C5F1-4869-B506-6204269D91D9} = {14433536-6A14-4C84-81DE-AA8E7BC00339}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {47A0DF2F-BE63-48B5-8A92-CFA446A80923}

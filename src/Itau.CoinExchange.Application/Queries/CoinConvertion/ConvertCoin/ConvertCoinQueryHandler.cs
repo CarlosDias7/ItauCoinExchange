@@ -2,26 +2,25 @@
 using Itau.CoinExchange.WebClients.Contracts.CurrconvApi;
 using Itau.CoinExchange.WebClients.Contracts.Dtos.CurrconvApi;
 using MediatR;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Itau.CoinExchange.Application.Queries.CoinConvertion.ConvertCoin
 {
-    public class ConvertCoinCommandHandler : IRequestHandler<ConvertCoinCommand, ConvertCoinResultDto>
+    public class ConvertCoinQueryHandler : IRequestHandler<ConvertCoinQuery, ConvertCoinResultDto>
     {
         private readonly ICurrconvApiClient _currconvApiClient;
 
-        public ConvertCoinCommandHandler(ICurrconvApiClient currconvApiClient)
+        public ConvertCoinQueryHandler(ICurrconvApiClient currconvApiClient)
         {
             _currconvApiClient = currconvApiClient;
         }
 
-        public async Task<ConvertCoinResultDto> Handle(ConvertCoinCommand request, CancellationToken cancellationToken)
+        public async Task<ConvertCoinResultDto> Handle(ConvertCoinQuery request, CancellationToken cancellationToken)
         {
             var dto = new CurrconvConvertCoinDto(request.CoinFrom, request.CoinTo, request.Date);
             var resultDto = await _currconvApiClient.ConvertCoinAsync(dto, cancellationToken);
-            var resultAmount = Math.Round(request.Amount * resultDto.CurrencyValue, 2);
+            var resultAmount = request.Amount * resultDto.CurrencyValue;
 
             return new ConvertCoinResultDto
             {

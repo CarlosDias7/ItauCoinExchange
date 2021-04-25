@@ -2,6 +2,7 @@
 using Itau.CoinExchange.WebClients.Contracts.ExchangeRateApi;
 using Itau.CoinExchange.WebClients.CurrconvApi;
 using Itau.CoinExchange.WebClients.CurrconvApi.Configurations;
+using Itau.CoinExchange.WebClients.CurrconvApi.HealthCheck;
 using Itau.CoinExchange.WebClients.ExchangeRateApi;
 using Itau.CoinExchange.WebClients.ExchangeRateApi.Configurations;
 using Microsoft.Extensions.Configuration;
@@ -40,6 +41,9 @@ namespace Itau.CoinExchange.WebClients.DependencyInjection
             })
             .AddPolicyHandler(GetRetryPolicy(currconvOptions.RetryCount, currconvOptions.SleepDurationInSeconds))
             .AddPolicyHandler(GetCircuitBreakerPolicy(currconvOptions.HandledEventsAllowedBeforeBreaking, currconvOptions.DurationOfBreakInSeconds));
+
+            services.AddHealthChecks()
+                .AddCheck<CurrconvApiHealthCheck>(nameof(CurrconvApiHealthCheck), Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Unhealthy);
         }
 
         private static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy(int retryCount, int sleepDurationInSeconds) 

@@ -24,6 +24,13 @@ namespace Itau.CoinExchange.WebClients.CurrconvApi
             _options = options;
         }
 
+        public async Task<bool> HealthCheckAsync(CancellationToken cancellationToken)
+        {
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, $"countries?apiKey={_options.ApiKey}");
+            var response = await _httpClient.SendAsync(httpRequest, cancellationToken);
+            return response.IsSuccessStatusCode;
+        }
+
         public async Task<CurrconvConvertCoinResultDto> ConvertCoinAsync(CurrconvConvertCoinDto dto, CancellationToken cancellationToken)
         {
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, $"convert?apiKey={_options.ApiKey}&q={GetQueryParam(dto.CoinFrom, dto.CoinTo)}&date={dto.Date.ToString("yyyy-MM-dd")}");

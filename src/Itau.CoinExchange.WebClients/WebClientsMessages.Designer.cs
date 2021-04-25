@@ -70,6 +70,24 @@ namespace Itau.CoinExchange.WebClients {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O serviço de conversão de moedas está operando normalmente..
+        /// </summary>
+        internal static string CurrconvApiHealthCheck_Healthy {
+            get {
+                return ResourceManager.GetString("CurrconvApiHealthCheck_Healthy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O serviço de conversão de moedas está inoperante..
+        /// </summary>
+        internal static string CurrconvApiHealthCheck_UnHealthy {
+            get {
+                return ResourceManager.GetString("CurrconvApiHealthCheck_UnHealthy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Não foi possível realizar a conversão solicitada. {0}.
         /// </summary>
         internal static string ExchangeRateApiClient_Convert_Is_Not_Possible {

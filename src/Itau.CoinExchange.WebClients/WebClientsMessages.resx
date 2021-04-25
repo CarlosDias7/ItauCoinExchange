@@ -120,6 +120,12 @@
   <data name="CurrconvApiClient_Convertion_Is_Not_Possible" xml:space="preserve">
     <value>Não foi possível realizar a conversão solicitada.</value>
   </data>
+  <data name="CurrconvApiHealthCheck_Healthy" xml:space="preserve">
+    <value>O serviço de conversão de moedas está operando normalmente.</value>
+  </data>
+  <data name="CurrconvApiHealthCheck_UnHealthy" xml:space="preserve">
+    <value>O serviço de conversão de moedas está inoperante.</value>
+  </data>
   <data name="ExchangeRateApiClient_Convert_Is_Not_Possible" xml:space="preserve">
     <value>Não foi possível realizar a conversão solicitada. {0}</value>
   </data>
