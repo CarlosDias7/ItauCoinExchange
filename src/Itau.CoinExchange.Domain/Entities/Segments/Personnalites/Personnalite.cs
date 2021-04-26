@@ -2,8 +2,8 @@
 {
     public class Personnalite : Segment
     {
-        public Personnalite(string name, decimal exchangeRate)
-            : base(name, exchangeRate)
+        public Personnalite(long id, string name, decimal exchangeRate)
+            : base(id, name, exchangeRate)
         {
             Validate();
         }

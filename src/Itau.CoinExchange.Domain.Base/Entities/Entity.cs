@@ -12,6 +12,11 @@ namespace Itau.CoinExchange.Domain.Base.Entities
         public bool Valid => ValidationResult?.IsValid ?? Validate();
         public ValidationResult ValidationResult { get; private set; }
 
+        public Entity(TId id)
+        {
+            Id = id;
+        }
+
         protected bool OnValidate<TValidator, TEntity>(TEntity entity, TValidator validator)
             where TValidator : AbstractValidator<TEntity>
             where TEntity : Entity<TId>

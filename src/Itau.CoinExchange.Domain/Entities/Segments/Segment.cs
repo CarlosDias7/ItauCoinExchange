@@ -10,7 +10,8 @@ namespace Itau.CoinExchange.Domain.Entities.Segments
         public string Name { get; private set; }
         public decimal ExchangeRate { get; private set; }
 
-        protected Segment(string name, decimal exchangeRate)
+        protected Segment(long id, string name, decimal exchangeRate)
+            :base(id)
         {
             Name = name;
             ExchangeRate = exchangeRate;

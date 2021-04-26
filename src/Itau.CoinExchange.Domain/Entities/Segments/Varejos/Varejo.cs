@@ -2,8 +2,8 @@
 {
     public class Varejo : Segment
     {
-        public Varejo(string name, decimal exchangeRate)
-            : base(name, exchangeRate)
+        public Varejo(long id, string name, decimal exchangeRate)
+            : base(id, name, exchangeRate)
         {
             Validate();
         }

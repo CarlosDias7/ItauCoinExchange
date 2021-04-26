@@ -2,8 +2,8 @@
 {
     public class Private : Segment
     {
-        public Private(string name, decimal exchangeRate)
-            : base(name, exchangeRate)
+        public Private(long id, string name, decimal exchangeRate)
+            : base(id, name, exchangeRate)
         {
             Validate();
         }
