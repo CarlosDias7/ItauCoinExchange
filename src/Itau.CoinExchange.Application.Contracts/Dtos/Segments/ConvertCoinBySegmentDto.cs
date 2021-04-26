@@ -3,7 +3,6 @@
     public class ConvertCoinBySegmentDto
     {
         public string CoinFrom { get; set; }
-        public string CoinTo { get; set; }
         public decimal Amount { get; set; }
         public long SegmentId { get; set; }
     }

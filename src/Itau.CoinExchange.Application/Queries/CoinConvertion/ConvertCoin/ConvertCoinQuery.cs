@@ -7,6 +7,8 @@ namespace Itau.CoinExchange.Application.Queries.CoinConvertion.ConvertCoin
 {
     public class ConvertCoinQuery : IRequest<ConvertCoinResultDto>
     {
+        private const string DefaultCoinTo = "BRL";
+
         public string CoinFrom { get; set; }
         public string CoinTo { get; set; }
         public decimal Amount { get; set; }
@@ -16,6 +18,14 @@ namespace Itau.CoinExchange.Application.Queries.CoinConvertion.ConvertCoin
         {
             CoinFrom = coinFrom;
             CoinTo = coinTo;
+            Amount = amount;
+            Date = date;
+        }
+
+        public ConvertCoinQuery(string coinFrom, decimal amount, DateTime date)
+        {
+            CoinFrom = coinFrom;
+            CoinTo = DefaultCoinTo;
             Amount = amount;
             Date = date;
         }

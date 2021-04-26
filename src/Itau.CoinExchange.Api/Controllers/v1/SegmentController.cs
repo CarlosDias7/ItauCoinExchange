@@ -1,4 +1,5 @@
-﻿using Itau.CoinExchange.Application.Contracts.Dtos.Segments;
+﻿using Itau.CoinExchange.Api.Controllers.Base;
+using Itau.CoinExchange.Application.Contracts.Dtos.Segments;
 using Itau.CoinExchange.Application.Contracts.UseCases.Segments;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,8 +10,9 @@ using System.Threading.Tasks;
 namespace Itau.CoinExchange.Api.Controllers.v1
 {
     [ApiController]
-    [Route("v{version:apiVersion}/[controller]")]
-    public class SegmentController : ControllerBase
+    [ApiVersion("1.0")]
+    [Route("v{version:apiVersion}/segments")]
+    public class SegmentController : BaseController
     {
         /// <summary>
         /// Retorna os segmentos para consulta de conversão de moedas.
@@ -22,7 +24,7 @@ namespace Itau.CoinExchange.Api.Controllers.v1
         [ProducesResponseType(typeof(IEnumerable<string>), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetSegments(CancellationToken cancellationToken, [FromServices] IGetSegmentsUseCase getSegmentsUseCase)
         {
-            return Ok(await getSegmentsUseCase.ExecuteAsync(cancellationToken));
+            return ApiSuccessResult(await getSegmentsUseCase.ExecuteAsync(cancellationToken));
         }
 
         /// <summary>
@@ -35,7 +37,7 @@ namespace Itau.CoinExchange.Api.Controllers.v1
         [ProducesResponseType(typeof(IEnumerable<string>), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> ConUpdateSegmentExchangeRatevertCoinBySegment(long segmentId, decimal exchangeRate, CancellationToken cancellationToken, [FromServices] IUpdateSegmentExchangeRateUseCase updateSegmentExchangeRateUseCase)
         {
-            return Ok(await updateSegmentExchangeRateUseCase.ExecuteAsync(segmentId, exchangeRate, cancellationToken));
+            return ApiSuccessResult(await updateSegmentExchangeRateUseCase.ExecuteAsync(segmentId, exchangeRate, cancellationToken));
         }
     }
 }

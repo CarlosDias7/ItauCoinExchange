@@ -1,15 +1,11 @@
-﻿using Itau.CoinExchange.WebClients.Contracts.Dtos.CurrconvApi;
+﻿using Itau.CoinExchange.Utils.Objects;
+using Itau.CoinExchange.WebClients.Contracts.CurrconvApi;
+using Itau.CoinExchange.WebClients.Contracts.Dtos.CurrconvApi;
 using Itau.CoinExchange.WebClients.CurrconvApi.Configurations;
 using Newtonsoft.Json;
-using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Itau.CoinExchange.Utils.Objects;
-using Itau.CoinExchange.WebClients.Contracts.CurrconvApi;
-using System.Collections.Generic;
-using System.Text;
-using System.Web;
 
 namespace Itau.CoinExchange.WebClients.CurrconvApi
 {
@@ -56,7 +52,7 @@ namespace Itau.CoinExchange.WebClients.CurrconvApi
             var valResultConverstion = resultConvertion.GetProperty("val");
             var currencyValue = valResultConverstion.GetProperty(dto.Date.ToString("yyyy-MM-dd"));
 
-            if(!decimal.TryParse(currencyValue?.ToString(), out var currencyValueConverted))
+            if (!decimal.TryParse(currencyValue?.ToString(), out var currencyValueConverted))
                 throw new HttpRequestException(WebClientsMessages.CurrconvApiClient_Convertion_Is_Not_Possible);
 
             return new CurrconvConvertCoinResultDto

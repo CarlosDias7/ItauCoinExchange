@@ -1,4 +1,5 @@
-﻿using Itau.CoinExchange.Application.Contracts.Dtos.Segments;
+﻿using Itau.CoinExchange.Api.Controllers.Base;
+using Itau.CoinExchange.Application.Contracts.Dtos.Segments;
 using Itau.CoinExchange.Application.Contracts.UseCases.Segments;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,8 +10,9 @@ using System.Threading.Tasks;
 namespace Itau.CoinExchange.Api.Controllers.v1
 {
     [ApiController]
-    [Route("v{version:apiVersion}/[controller]")]
-    public class CoinConvertionController : ControllerBase
+    [ApiVersion("1.0")]
+    [Route("v{version:apiVersion}/coins/convertions")]
+    public class CoinConvertionController : BaseController
     {
         /// <summary>
         /// Realiza a cotação e compra de moedas estrangeiras por segmento.
@@ -22,7 +24,7 @@ namespace Itau.CoinExchange.Api.Controllers.v1
         [ProducesResponseType(typeof(IEnumerable<string>), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> ConvertCoinBySegment([FromQuery] ConvertCoinBySegmentDto dto, CancellationToken cancellationToken, [FromServices] IConvertCoinBySegmentUseCase convertCoinBySegmentUseCase)
         {
-            return Ok(await convertCoinBySegmentUseCase.ExecuteAsync(dto, cancellationToken));
+            return ApiSuccessResult(await convertCoinBySegmentUseCase.ExecuteAsync(dto, cancellationToken));
         }
     }
 }

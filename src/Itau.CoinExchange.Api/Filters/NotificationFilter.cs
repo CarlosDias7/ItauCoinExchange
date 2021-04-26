@@ -1,8 +1,10 @@
-﻿using Itau.CoinExchange.Application.Contracts.Notifications.Contexts;
+﻿using Itau.CoinExchange.Api.RequestResults;
+using Itau.CoinExchange.Application.Contracts.Notifications.Contexts;
 using Itau.CoinExchange.Application.Notifications.Contexts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -29,8 +31,14 @@ namespace Itau.CoinExchange.Api.Filters
             if (!_notificationContext.HasNotifications) return false;
 
             SetBadRequest(context);
-            var notifications = JsonConvert.SerializeObject(_notificationContext.Notifications);
-            await context.HttpContext.Response.WriteAsync(notifications);
+            var requestResult = new RequestResult<object>
+            {
+                Success = false,
+                Messages = _notificationContext.Notifications.ToList()
+            };
+
+            var requestResultJson = JsonConvert.SerializeObject(requestResult);
+            await context.HttpContext.Response.WriteAsync(requestResultJson);
 
             return true;
         }
