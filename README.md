@@ -4,6 +4,7 @@ Este projeto exemplica a implementação de uma aplicação que consome um servi
 Construída em **.NET 5** sob um arquitetura hexagonal e aplicando os conceitos de **Domain-Driven Design**.
 
 ![.NET 5](https://github.com/CarlosDias7/ItauCoinExchange/workflows/.NET%20Core/badge.svg)
+[![CodeFactor](https://www.codefactor.io/repository/github/carlosdias7/itaucoinexchange/badge?s=910de5c3b0517e430ffdf067252e57f429c73dfc)](https://www.codefactor.io/repository/github/carlosdias7/itaucoinexchange)
 
 ## Tecnologias
 
@@ -38,6 +39,8 @@ docker-compose -f docker-compose.itau-coin-exchange.yml up --build
 ```
 
 O arquivo *docker-compose.itau-coin-exchange.yml* configura o container para a aplicação e para o banco de dados SQL Server.
+
+Acesse https://localhost:5000/swagger/index.html para abrir a especificação da API.
 
 ## Endpoints
 
