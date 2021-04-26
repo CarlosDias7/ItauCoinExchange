@@ -13,7 +13,7 @@ namespace Itau.CoinExchange.DependenciesInjections
         {
             services.UseApplication();
             services.UseRepositories();
-            services.UseDataContext();
+            services.UseDataContext(configuration);
             services.UseWebClients(configuration);
         }
     }

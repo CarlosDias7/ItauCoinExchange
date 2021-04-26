@@ -1,4 +1,5 @@
 ﻿using Itau.CoinExchange.Api.Controllers.Base;
+using Itau.CoinExchange.Api.RequestResults;
 using Itau.CoinExchange.Application.Contracts.Dtos.Segments;
 using Itau.CoinExchange.Application.Contracts.UseCases.Segments;
 using Microsoft.AspNetCore.Http;
@@ -20,8 +21,8 @@ namespace Itau.CoinExchange.Api.Controllers.v1
         /// <response code="200">A consulta foi realizada com sucesso.</response>
         /// <response code="400">Ocorreu um erro inesperado durante a consulta.</response>
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<SegmentDto>), 200)]
-        [ProducesResponseType(typeof(IEnumerable<string>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(RequestResult<IEnumerable<SegmentDto>>), 200)]
+        [ProducesResponseType(typeof(RequestResult<object>), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetSegments(CancellationToken cancellationToken, [FromServices] IGetSegmentsUseCase getSegmentsUseCase)
         {
             return ApiSuccessResult(await getSegmentsUseCase.ExecuteAsync(cancellationToken));
@@ -33,8 +34,8 @@ namespace Itau.CoinExchange.Api.Controllers.v1
         /// <response code="200">A atualização foi realizada com sucesso.</response>
         /// <response code="400">Ocorreu um erro inesperado durante a atualização.</response>
         [HttpPut("exchange-rate")]
-        [ProducesResponseType(typeof(IEnumerable<SegmentDto>), 200)]
-        [ProducesResponseType(typeof(IEnumerable<string>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(RequestResult<SegmentDto>), 200)]
+        [ProducesResponseType(typeof(RequestResult<object>), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> ConUpdateSegmentExchangeRatevertCoinBySegment(long segmentId, decimal exchangeRate, CancellationToken cancellationToken, [FromServices] IUpdateSegmentExchangeRateUseCase updateSegmentExchangeRateUseCase)
         {
             return ApiSuccessResult(await updateSegmentExchangeRateUseCase.ExecuteAsync(segmentId, exchangeRate, cancellationToken));

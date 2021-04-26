@@ -1,4 +1,5 @@
-﻿using Itau.CoinExchange.Data.Contexts.Seeds;
+﻿using Itau.CoinExchange.Data.Contexts.Configurations;
+using Itau.CoinExchange.Data.Contexts.Seeds;
 using Itau.CoinExchange.Domain.Entities.Segments;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -10,11 +11,13 @@ namespace Itau.CoinExchange.Data.Contexts
     public class ItauCoinExchangeDbContext : DbContext
     {
         private readonly IConfiguration _configuration;
+        private readonly ItauCoinExchageSqlServerOptions _itauCoinExchageSqlServerOptions;
 
-        public ItauCoinExchangeDbContext(DbContextOptions options, IConfiguration configuration)
+        public ItauCoinExchangeDbContext(DbContextOptions options, IConfiguration configuration, ItauCoinExchageSqlServerOptions itauCoinExchageSqlServerOptions)
             : base(options)
         {
             _configuration = configuration;
+            _itauCoinExchageSqlServerOptions = itauCoinExchageSqlServerOptions;
         }
 
         public DbSet<Segment> Segments { get; set; }
@@ -43,9 +46,9 @@ namespace Itau.CoinExchange.Data.Contexts
                 .ExecutionStrategy(
                     dependencies => new SqlServerRetryingExecutionStrategy(
                         dependencies: dependencies,
-                        maxRetryCount: 3,
-                        maxRetryDelay: TimeSpan.FromSeconds(30),
-                        errorNumbersToAdd: new int[] { 3 }))
+                        maxRetryCount: _itauCoinExchageSqlServerOptions.MaxRetryCount,
+                        maxRetryDelay: TimeSpan.FromSeconds(_itauCoinExchageSqlServerOptions.MaxRetryDelayInSeconds),
+                        errorNumbersToAdd: _itauCoinExchageSqlServerOptions.ErrorNumbersToAdd))
                 .MigrationsAssembly(assemblyName: typeof(ItauCoinExchangeDbContext).Assembly.GetName().Name);
     }
 }
