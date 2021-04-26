@@ -17,19 +17,5 @@ namespace Itau.CoinExchange.Api.Integration.Tests.Segments
         {
             _client = factory.CreateClient();
         }
-
-        [Fact]
-        public async Task ValidateSegmentController_Get_MustReturnsSuccessSegmentList()
-        {
-            var httpResponse = await _client.GetAsync("/api/v1/segments");
-
-            httpResponse.EnsureSuccessStatusCode();
-
-            var stringResponse = await httpResponse.Content.ReadAsStringAsync();
-
-            Assert.Contains("Personnalite", stringResponse);
-            Assert.Contains("Private", stringResponse);
-            Assert.Contains("Varejo", stringResponse);
-        }
     }
 }
