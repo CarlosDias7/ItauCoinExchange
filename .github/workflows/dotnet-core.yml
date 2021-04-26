@@ -16,12 +16,12 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.100-rc.2.20479.15
+        dotnet-version: 5.0.5
     - name: Install dependencies
-      run: dotnet restore CotacaoDeMoedas.sln
+      run: dotnet restore ItauCoinExchange.sln
       
     - name: Build
-      run: dotnet build CotacaoDeMoedas.sln --configuration Release --no-restore
+      run: dotnet build ItauCoinExchange.sln --configuration Release --no-restore
       
     - name: Test
-      run: dotnet test CotacaoDeMoedas.sln --no-restore --verbosity normal
+      run: dotnet test ItauCoinExchange.sln --no-restore --verbosity normal
