@@ -19,3 +19,5 @@ Construída em **.NET 5** sob um arquitetura hexagonal e aplicando os conceitos 
 
 ## Arquitetura
 
+![diagrama](./.assets/img/ItauCoinExchangeDiagram.jpg)
+
